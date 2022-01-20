@@ -2,6 +2,7 @@ from albert import *
 import re
 from os import path
 from os import walk
+import json
 
 __title__ = "Laravel valet"
 __version__ = "0.4.0"
@@ -13,6 +14,16 @@ icon = "{}/icon.png".format(path.dirname(__file__))
 _dirs = [
     '/home/y/code',
 ]
+
+dir = path.dirname(path.abspath(__file__))
+
+commands = path.join(dir, 'commands.json')
+
+file = open(commands)
+commands = json.load(file)
+file.close()
+
+print(commands)
 
 def handleQuery(query):
     if not query.isTriggered or not query.isValid:
@@ -41,5 +52,17 @@ def handleQuery(query):
                     script='cd {} && valet share'.format(project), 
                 )],
             ))
+
+    for command in commands:
+        items.append(Item(
+            id=command,
+            icon=icon,
+            text=command,
+            actions=[TermAction(
+                text="This action runs valet.", 
+                script='valet {}'.format(command), 
+            )],
+        ))
+
 
     return items
