@@ -46,7 +46,7 @@ def handleQuery(query):
             items.append(Item(
                 id=project,
                 icon=icon,
-                text=project[(project.rfind('/') + 1):],
+                text='share ' + project[(project.rfind('/') + 1):],
                 actions=[TermAction(
                     text="This action runs valet.", 
                     script='cd {} && valet share'.format(project), 
@@ -63,6 +63,5 @@ def handleQuery(query):
                 script='valet {}'.format(command), 
             )],
         ))
-
 
     return items
