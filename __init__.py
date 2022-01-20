@@ -54,14 +54,15 @@ def handleQuery(query):
             ))
 
     for command in commands:
-        items.append(Item(
-            id=command,
-            icon=icon,
-            text=command,
-            actions=[TermAction(
-                text="This action runs valet.", 
-                script='valet {}'.format(command), 
-            )],
-        ))
+        if re.search(regexp, command): 
+            items.append(Item(
+                id=command,
+                icon=icon,
+                text=command,
+                actions=[TermAction(
+                    text="This action runs valet.", 
+                    script='valet {}'.format(command), 
+                )],
+            ))
 
     return items
