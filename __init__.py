@@ -23,8 +23,6 @@ file = open(commands)
 commands = json.load(file)
 file.close()
 
-print(commands)
-
 def handleQuery(query):
     if not query.isTriggered or not query.isValid:
         return
