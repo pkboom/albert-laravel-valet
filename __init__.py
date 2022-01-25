@@ -39,12 +39,12 @@ def handleQuery(query):
 
     items = []
 
-    for project in projects:
+    for project in projects: # valet share
         if re.search(regexp, project[(project.rfind('/') + 1):]): 
             items.append(Item(
                 id=project,
                 icon=icon,
-                text='share ' + project[(project.rfind('/') + 1):],
+                text='valet share ' + project[(project.rfind('/') + 1):],
                 actions=[TermAction(
                     text="This action runs valet.", 
                     script='cd {} && valet share'.format(project), 
@@ -58,8 +58,8 @@ def handleQuery(query):
                 icon=icon,
                 text=command,
                 actions=[TermAction(
-                    text="This action runs valet.", 
-                    script='valet {}'.format(command), 
+                    text="This action runs commands.", 
+                    script=command, 
                 )],
             ))
 

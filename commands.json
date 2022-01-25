@@ -1,4 +1,5 @@
 [
-  "use 7.4",
-  "use 8.0"
+  "valet use 7.4",
+  "valet use 8.1",
+  "composer global update"
 ]
