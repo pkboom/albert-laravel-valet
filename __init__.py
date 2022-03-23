@@ -40,7 +40,6 @@ def handleQuery(query):
     items = []
 
     for project in projects: # valet share
-        # if re.search(regexp, project[(project.rfind('/') + 1):]): 
         share = 'valet share ' + project[(project.rfind('/') + 1):]
 
         if re.search(regexp, share): 
